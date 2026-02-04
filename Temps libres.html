@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>French Free Time Flashcards</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef5f3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  width: 220px;
+  height: 140px;
+  margin: 12px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .inner {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  backface-visibility: hidden;
+  padding: 12px;
+}
+
+.front {
+  background-color: #2fa4a9;
+  color: white;
+}
+
+.back {
+  background-color: #ffffff;
+  color: #2c3e50;
+  transform: rotateY(180deg);
+  border: 2px solid #2fa4a9;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const cards = [
+  ["Faire du sport", "Å drive med sport"],
+  ["Jouer au football", "Å spille fotball"],
+  ["Jouer au basket", "Å spille basketball"],
+  ["Faire de la natation", "Å svømme"],
+  ["Faire du vélo", "Å sykle"],
+  ["Courir", "Å løpe"],
+  ["Danser", "Å danse"],
+  ["Faire du yoga", "Å gjøre yoga"],
+  ["Lire", "Å lese"],
+  ["Regarder des films", "Å se på filmer"],
+  ["Écouter de la musique", "Å høre på musikk"],
+  ["Jouer aux jeux vidéo", "Å spille videospill"],
+  ["Jouer d’un instrument", "Å spille et instrument"],
+  ["Dessiner", "Å tegne"],
+  ["Peindre", "Å male"],
+  ["Cuisiner", "Å lage mat"],
+  ["Faire du théâtre", "Å drive med teater"],
+  ["Faire de la randonnée", "Å gå på tur"],
+  ["Prendre des photos", "Å ta bilder"],
+  ["Sortir avec des amis", "Å være sammen med venner"]
+];
+
+cards.forEach(cardData => {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <div class="inner">
+      <div class="front">${cardData[0]}</div>
+      <div class="back">${cardData[1]}</div>
+    </div>
+  `;
+
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+  });
+
+  document.body.appendChild(card);
+});
+</script>
+
+</body>
+</html>
